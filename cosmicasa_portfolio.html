@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmicasa - Amanda Freeza Wima Agusha</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 (versi 7 belum tersedia di CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Dream Avenue';
+            src: local('Georgia'), local('Serif');
+            font-style: italic;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #D7C097;
+            --secondary: #778873;
+            --dark: #313647;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1d2e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Floating Graduation Caps */
+        .floating-cap {
+            position: fixed;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(49, 54, 71, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        nav .nav-link {
+            color: var(--primary) !important;
+            font-weight: 500;
+            margin: 0 1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav .nav-link:hover {
+            color: #fff !important;
+            transform: translateY(-2px);
+        }
+        
+        nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        #beranda {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .tagline {
+            font-family: 'Dream Avenue', Georgia, serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .graduation-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Social Links */
+        .social-links {
+            margin-top: 3rem;
+        }
+        
+        .social-links h3 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 1rem;
+            line-height: 60px;
+            font-size: 1.8rem;
+            color: #fff;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-10px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(215, 192, 151, 0.5);
+        }
+        
+        /* Profile Section */
+        .profile-card {
+            background: rgba(119, 136, 115, 0.2);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 3rem auto;
+            max-width: 600px;
+            animation: fadeInUp 1s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .profile-card h2 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(215, 192, 151, 0.3);
+        }
+        
+        .profile-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .profile-value {
+            color: #e0e0e0;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: rgba(119, 136, 115, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 3rem auto;
+            max-width: 900px;
+        }
+        
+        .about-content h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        
+        .about-content h3 {
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p, .about-content ul {
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+        
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .about-content li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .about-content li::before {
+            content: '\f19d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            min-height: 100vh;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .graduation-icon {
+                font-size: 3rem;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 1.5rem;
+                margin: 0 0.5rem;
+            }
+            
+            .profile-card, .about-content {
+                padding: 2rem;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Graduation Caps -->
+    <div id="floating-caps"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#beranda">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#profil">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tentang">Tentang</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Beranda Section -->
+    <section id="beranda">
+        <div class="container">
+            <div class="hero-content">
+                <div class="graduation-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1>Amanda Freeza Wima Agusha</h1>
+                <p class="tagline">Empowering Ideas Through Digital Excellence</p>
+                
+                <div class="social-links">
+                    <h3>Hubungi Saya</h3>
+                    <div>
+                        <a href="https://wa.me/6289673787320" target="_blank" class="social-icon" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:awimaagusha@gmail.com" class="social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mandaa.fw" target="_blank" class="social-icon" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Profil Section -->
+    <section id="profil">
+        <div class="container">
+            <div class="profile-card">
+                <h2 class="text-center">
+                    <i class="fas fa-user-circle me-2"></i>
+                    Profil Saya
+                </h2>
+                <div class="profile-item">
+                    <span class="profile-label">Nama Lengkap:</span>
+                    <span class="profile-value">Amanda Freeza Wima Agusha</span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Program Studi:</span>
+                    <span class="profile-value">Bisnis Digital</span>
+                </div>
+                <div class="profile-item">
+                    <span class="profile-label">Semester:</span>
+                    <span class="profile-value">5</span>
+                </div>
+                <div class="profile-item" style="border-bottom: none;">
+                    <span class="profile-label">Status:</span>
+                    <span class="profile-value">Mahasiswa Aktif</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tentang Section -->
+    <section id="tentang">
+        <div class="container">
+            <div class="about-content">
+                <h2>
+                    <i class="fas fa-info-circle me-2"></i>
+                    Tentang Saya
+                </h2>
+                <p>
+                    Saya adalah mahasiswa program studi Bisnis Digital semester 5 yang memiliki passion dalam 
+                    mengembangkan strategi bisnis berbasis teknologi digital. Dengan latar belakang pengalaman 
+                    organisasi yang solid, saya memiliki kemampuan dalam manajemen keuangan, administrasi, 
+                    dan koordinasi acara yang telah teruji melalui berbagai posisi kepemimpinan.
+                </p>
+                
+                <h3>
+                    <i class="fas fa-briefcase me-2"></i>
+                    Pengalaman Organisasi
+                </h3>
+                <ul>
+                    <li>
+                        <strong>Bendahara BEM</strong> - Mengelola keuangan organisasi dengan transparan dan 
+                        akuntabel, serta bertanggung jawab atas perencanaan dan pelaporan anggaran kegiatan kemahasiswaan.
+                    </li>
+                    <li>
+                        <strong>Sekretaris Seminar dan Workshop Kewirausahaan</strong> - Mengkoordinasikan administrasi 
+                        acara, dokumentasi, dan komunikasi dengan narasumber serta peserta untuk memastikan kelancaran 
+                        pelaksanaan kegiatan.
+                    </li>
+                    <li>
+                        <strong>Bendahara Event</strong> - Menangani pengelolaan dana berbagai acara dengan sistem 
+                        pencatatan yang sistematis dan memastikan efisiensi dalam penggunaan anggaran.
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 2rem;">
+                    Melalui pengalaman-pengalaman tersebut, saya telah mengasah kemampuan leadership, teamwork, 
+                    financial management, dan problem-solving yang akan terus saya kembangkan dalam perjalanan 
+                    akademis dan profesional saya.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <script>
+        // Create Floating Graduation Caps
+        function createFloatingCaps() {
+            const container = document.getElementById('floating-caps');
+            const numberOfCaps = 15;
+            
+            for (let i = 0; i < numberOfCaps; i++) {
+                const cap = document.createElement('i');
+                cap.className = 'fas fa-graduation-cap floating-cap';
+                cap.style.left = Math.random() * 100 + '%';
+                cap.style.top = Math.random() * 100 + '%';
+                cap.style.animationDelay = Math.random() * 5 + 's';
+                cap.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                container.appendChild(cap);
+            }
+        }
+        
+        createFloatingCaps();
+        
+        // Animate floating caps with Anime.js
+        anime({
+            targets: '.floating-cap',
+            translateY: function() {
+                return anime.random(-50, 50);
+            },
+            translateX: function() {
+                return anime.random(-50, 50);
+            },
+            rotate: function() {
+                return anime.random(-30, 30);
+            },
+            scale: function() {
+                return anime.random(0.8, 1.2);
+            },
+            duration: function() {
+                return anime.random(3000, 8000);
+            },
+            easing: 'easeInOutSine',
+            loop: true,
+            direction: 'alternate'
+        });
+        
+        // Animate social icons on load
+        anime({
+            targets: '.social-icon',
+            scale: [0, 1],
+            rotate: [0, 360],
+            duration: 1000,
+            delay: anime.stagger(100, {start: 500}),
+            easing: 'easeOutElastic(1, .6)'
+        });
+        
+        // Smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateY: [50, 0],
+                        duration: 1000,
+                        easing: 'easeOutExpo'
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.profile-card, .about-content').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Save visit to localStorage
+        const visits = parseInt(localStorage.getItem('cosmicasaVisits') || '0') + 1;
+        localStorage.setItem('cosmicasaVisits', visits.toString());
+        console.log(`Total kunjungan: ${visits}`);
+    </script>
+</body>
+</html>
